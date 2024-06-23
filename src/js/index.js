@@ -10,19 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890!@#$%^&*()_+-={}[]:;<>,.?/';
 
-  function updateLengthValue() {
+  const updateLengthValue = () => {
     const length = lengthInput.value;
     lengthValue.textContent = length;
     checkButtonStatus();
     updateStrength();
     generatePassword();
-  }
+  };
 
-  function checkButtonStatus() {
+  const checkButtonStatus = () => {
     generateButton.disabled = lengthInput.value <= 3;
-  }
+  };
 
-  function updateStrength() {
+  const updateStrength = () => {
     const length = parseInt(lengthInput.value, 10);
     if (length <= 5) {
       strengthDisplay.textContent = 'TOO SHORT';
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       strengthDisplay.textContent = 'STRONG';
     }
-  }
+  };
 
-  function generatePassword() {
+  const generatePassword = () => {
     const length = parseInt(lengthInput.value, 10);
     let password = '';
     for (let i = 0; i < length; i++) {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       password += characters[randomIndex];
     }
     passwordInput.value = password;
-  }
+  };
 
   lengthInput.addEventListener('input', updateLengthValue);
   generateButton.addEventListener('click', generatePassword);
